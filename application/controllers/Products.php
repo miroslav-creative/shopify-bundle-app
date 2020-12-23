@@ -48,10 +48,10 @@ class Products extends REST_Controller {
 		$data = file_get_contents("php://input");
 
 		$data_array = json_decode($data, true);
-		var_dump($data_array["product"]);
+		// var_dump($data_array["product"]);
 
-		// $response = $shopify->Product->post($data_array["product"]);
+		$response = $shopify->Product->post($data_array["product"]);
 
-		// $this->response(json_encode($response), REST_Controller::HTTP_OK);
+		$this->response(json_encode($response), REST_Controller::HTTP_OK);
 	}
 }
