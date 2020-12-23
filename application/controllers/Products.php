@@ -20,6 +20,31 @@ class Products extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo 'test';
+		$this->load->helper('shopify');
+		$shopify = getShopify();
+
+		$data = json_decode(file_get_contents('php://input'), true);
+		var_dump($data["operacion"]);
+
+		// $productArray = [
+		// 	"title" => "Burton Custom Freestyle 151",
+		// 	"body_html" => "<strong>Good snowboard!</strong>",
+		// 	"vendor" => "Burton",
+		// 	"product_type" => "Snowboard",
+		// 	"published" => false
+		// ];
+
+		// $data = $shopify->Product->post($productArray);
+	}
+
+	public function create() {
+		$this->load->helper('shopify');
+		$shopify = getShopify();
+
+		$data = json_decode(file_get_contents('php://input'), true);
+
+		$response = $shopify->Product->post($data["product"]);
+
+		return json_encode($response);
 	}
 }
