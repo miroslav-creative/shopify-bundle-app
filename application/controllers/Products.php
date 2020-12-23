@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
@@ -43,10 +45,12 @@ class Products extends REST_Controller {
 		$this->load->helper('shopify');
 		$shopify = getShopify();
 
-		$data = json_decode(file_get_contents('php://input'), true);
+		$data = file_get_contents("php://input");
 
-		$response = $shopify->Product->post($data["product"]);
+		$data_array = json_decode($data, true);
 
-		$this->response(['Product created successfully.'], REST_Controller::HTTP_OK);
+		$response = $shopify->Product->post($data_array["product"]);
+
+		$this->response(json_encode($response), REST_Controller::HTTP_OK);
 	}
 }
