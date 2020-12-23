@@ -1,3 +1,4 @@
+<?php
 $config = array(
     'ShopUrl' => 'pick-n-mix-london.myshopify.com',
     'ApiKey' => '5e872cea3b147bb2da168053b60cc593',
