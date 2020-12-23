@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Products extends CI_Controller {
+require APPPATH . 'libraries/REST_Controller.php';
+
+class Products extends REST_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -45,6 +47,6 @@ class Products extends CI_Controller {
 
 		$response = $shopify->Product->post($data["product"]);
 
-		return json_encode($response);
+		$this->response(['Product created successfully.'], REST_Controller::HTTP_OK);
 	}
 }
