@@ -47,7 +47,8 @@ class Products extends REST_Controller {
 
 		$data = file_get_contents("php://input");
 
-		var_dump($data);
+		$data_array = json_decode($data, true);
+		var_dump($data_array);
 
 		// $response = $shopify->Product->post($data_array["product"]);
 
