@@ -1,0 +1,13 @@
+{
+    "name": "whitewolf/bundle_product_php",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Miroslav Eroshkin",
+            "email": "miroslav.creative@gmail.com"
+        }
+    ],
+    "require": {
+        "phpclassic/php-shopify": "^1.1"
+    }
+}
