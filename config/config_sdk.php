@@ -5,4 +5,4 @@ $config = array(
     'Password' => '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',
 );
 
-$shopify = new PHPShopify\ShopifySDK($config);
+$shopify = new \PHPShopify\ShopifySDK($config);
