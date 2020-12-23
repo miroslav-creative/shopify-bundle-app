@@ -2,4 +2,6 @@
 
 include('config/config_sdk.php');
 
-echo 'test';
+$products = $shopify->Product->get();
+
+echo count($products);
