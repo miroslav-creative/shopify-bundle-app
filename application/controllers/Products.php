@@ -20,7 +20,7 @@ class Products extends REST_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index_get()
 	{
 		$this->load->helper('shopify');
 		$shopify = getShopify();
@@ -39,7 +39,7 @@ class Products extends REST_Controller {
 		// $data = $shopify->Product->post($productArray);
 	}
 
-	public function create() {
+	public function index_post() {
 		$this->load->helper('shopify');
 		$shopify = getShopify();
 
