@@ -54,7 +54,7 @@ class Products extends REST_Controller {
 		$this->response(json_encode($response), REST_Controller::HTTP_OK);
 	}
 
-	public function order_delete() {
+	public function order_post() {
 		$this->load->helper('shopify');
 		$shopify = getShopify();
 
