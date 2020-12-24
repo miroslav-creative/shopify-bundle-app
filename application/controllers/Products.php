@@ -48,10 +48,22 @@ class Products extends REST_Controller {
 		$data = file_get_contents("php://input");
 
 		$data_array = json_decode($data, true);
-		// var_dump($data_array["product"]);
 
 		$response = $shopify->Product->post($data_array["product"]);
 
 		$this->response(json_encode($response), REST_Controller::HTTP_OK);
+	}
+
+	public function order_delete() {
+		$this->load->helper('shopify');
+		$shopify = getShopify();
+
+		$data = file_get_contents("php://input");
+		$data_array = json_decode($data, true);
+		for($i = 0; $i < count($data_array["order"]["line_items"]); $i++) {
+			if($data_array["order"]["line_items"][$i]["vendor"] == "Bundle" && $data_array["order"]["fulfillment_status"] == "fulfilled") {
+				$response = $shopify->Product->delete($data_array["order"]["line_items"][$i]["product_id"]);
+			}
+		}
 	}
 }
