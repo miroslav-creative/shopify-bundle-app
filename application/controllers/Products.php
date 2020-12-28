@@ -51,9 +51,8 @@ class Products extends REST_Controller {
 
 		if(isset($data_array["product"]["id"])) {
 			$response = $shopify->Product($data_array["product"]["id"])->Variant->post($data_array["product"]["variants"]);
+			$this->response(json_encode($response), REST_Controller::HTTP_OK);
 		}
-
-		$this->response(json_encode($response), REST_Controller::HTTP_OK);
 	}
 
 	public function order_post() {
